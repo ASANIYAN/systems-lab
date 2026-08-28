@@ -6,7 +6,7 @@ expected and what actually happened.
 
 ## Structure
 
-### 01-program-execution
+### 00-program-execution
 How a program starts and runs.
 
 - 0.1 CLI argument inspector — how command-line arguments arrive in Node.
@@ -15,7 +15,7 @@ How a program starts and runs.
 - 0.4 Event experiment — how the event loop schedules callbacks.
 - 0.5 Async ordering — the order sync code, promises, and timers run in.
 
-### 02-bytes-buffers
+### 01-bytes-buffers
 How raw bytes and buffers work.
 
 - 1.1 Hex viewer — reading a file and printing it as hex.
@@ -24,7 +24,7 @@ How raw bytes and buffers work.
 - 1.4 Tiny binary file format — reading and writing a custom binary format.
 - 1.5 Message encoder/decoder — encoding and decoding structured messages.
 
-### 03-streams
+### 02-streams
 How Node streams move data.
 
 - 2.1 File chunk reader — reading a file in chunks.
