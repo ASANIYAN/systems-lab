@@ -1,0 +1,4 @@
+hello
+world
+stream chunks
+partial lines matter
