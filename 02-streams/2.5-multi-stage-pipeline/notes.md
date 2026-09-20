@@ -6,15 +6,7 @@ How data moves through more than one Transform stream.
 
 I want to understand how this chain works:
 
-source
-↓
-transform A
-↓
-transform B
-↓
-transform C
-↓
-destination
+source -> transform A -> transform B -> transform C -> destination
 
 I also want to understand where state should live when one logical
 line is split across more than one chunk.
@@ -79,15 +71,7 @@ Each `.pipe()` call connected one stream to the next stream.
 
 The chain was:
 
-readStream
-↓
-uppercaser
-↓
-lineNumberer
-↓
-prefixer
-↓
-writeStream
+readStream -> uppercaser -> lineNumberer -> prefixer -> writeStream
 
 The first transform changed each chunk to uppercase text.
 
@@ -95,8 +79,7 @@ The second transform added line numbers. It had to remember unfinished
 line text in `leftover`. This mattered because the read stream used a
 small chunk size, so a chunk could end before a full line ended.
 
-When a chunk did not contain a full line, `numberedLines.length` was
-0. In that case, the transform called `callback()` with no output.
+When a chunk did not contain a full line, `numberedLines.length` was 0. In that case, the transform called `callback()` with no output.
 That meant "I processed this chunk, but I do not have a full line to
 send yet."
 
@@ -126,16 +109,6 @@ lines, so it owns the leftover partial line.
 - A transform can keep state between chunks when it needs to rebuild
   a logical unit.
 - `flush` is useful for final leftover data when the source ends.
-
-## What still doesn't make sense?
-
-This pipeline still uses `chunk.toString("utf8")` inside each
-transform. I have not tested this with multi byte UTF-8 characters
-like `é` or emoji.
-
-Based on the earlier byte work, I still expect this approach can break
-if a multi byte character is split across chunks. This project tested
-line boundaries, not character boundaries.
 
 ## Mental model after experimenting
 
