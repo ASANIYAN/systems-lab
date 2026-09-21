@@ -30,6 +30,16 @@ How Node streams move data.
 - 2.1 File chunk reader — reading a file in chunks.
 - 2.2 File copier — copying a file manually and with `pipe`.
 - 2.3 Slow consumer — observing backpressure with a slow writable stream.
+- 2.4 Transform stream — transforming data as it moves through a stream.
+- 2.5 Multi-stage pipeline — composing multiple transforms into one pipeline.
+
+### 03-processes
+How programs run as separate OS-managed processes.
+
+- 3.1 Process launcher — starting a child process and observing PIDs.
+- 3.2 Process monitor — tracking stdout, stderr, exit codes, signals, and startup failure.
+- 3.3 Process pipeline — connecting separate processes with stdin and stdout.
+- 3.4 Process supervisor — restarting failed child processes with a max attempt limit.
 
 ## Running an experiment
 
